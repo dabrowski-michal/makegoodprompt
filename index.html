@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Good Prompt</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo_transparent.png">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:title" content="Make Good Prompt." />
+    <meta property="og:description" content="Practical workshops, n8n automations, and human-friendly advisory to make AI useful today." />
+    <meta property="og:image" content="https://www.makegoodprompt.com/assets/logo_preview.png" />
+    <meta property="og:url" content="https://www.makegoodprompt.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter (X) preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Make Good Prompt" />
+    <meta name="twitter:description" content="Workshops, automations, and advisory. Simple. Practical. AI." />
+    <meta name="twitter:image" content="https://www.makegoodprompt.com/assets/logo_preview.png" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="img/logo_transparent.png" alt="Make Good Prompt Logo" class="logo-header">
+                    <a href="#home" class="company-name">Make Good Prompt</a>
+                </div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <img src="img/logo_transparent.png" alt="Make Good Prompt Logo" class="hero-icon" id="hero-icon">
+                <h1 id="headline">Make Good Prompt</h1>
+                <p class="hero-tagline">Practical help with automation, prompts, and AI workflows.</p>
+                <a href="#contact" class="cta-button" id="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p class="section-lead">Get practical help where it matters: automating work, training, and building reliable AI processes..</p>
+            <div class="services-grid">
+                <article class="service-card" tabindex="0">
+                    <div class="service-image">
+                        <img src="img/services-n8n.png" alt="Automation with n8n">
+                    </div>
+                    <div class="service-body">
+                        <h3>Automation with n8n</h3>
+                        <p>Automate repetitive tasks and content creation. Save hours every week with n8n.</p>
+                    </div>
+                    <div class="service-hover">
+                        <div class="service-hover-image" aria-hidden="true">
+                            <img src="img/services-n8n.png" alt="">
+                        </div>
+                        <div class="service-hover-content">
+                            <p class="service-hover-text">I help teams save time by automating repetitive work and connecting tools like Sheets, Slack, Notion, and Airtable. I review your process and build reliable workflows with clear documentation.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-image">
+                        <img src="img/services-workshops.png" alt="Practical team workshops">
+                    </div>
+                    <div class="service-body">
+                        <h3>Practical AI Workshops</h3>
+                        <p>Live sessions where your team learns to use AI tools effectively with real examples and real results.</p>
+                    </div>
+                    <div class="service-hover">
+                        <div class="service-hover-image" aria-hidden="true">
+                            <img src="img/services-workshops.png" alt="">
+                        </div>
+                        <div class="service-hover-content">
+                            <p class="service-hover-text">Live, hands-on sessions where your team learns to use AI with real examples. We cover prompting, automation, cheat sheets, and follow-up support.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-image">
+                        <img src="img/services-prompts.png" alt="Prompt and tools research">
+                    </div>
+                    <div class="service-body">
+                        <h3>Prompt &amp; Tools Research</h3>
+                        <p>I research tools, design prompt templates, and create clear documentations for your specifix needs.</p>
+                    </div>
+                    <div class="service-hover">
+                        <div class="service-hover-image" aria-hidden="true">
+                            <img src="img/services-prompts.png" alt="">
+                        </div>
+                        <div class="service-hover-content">
+                            <p class="service-hover-text">I help your team design consistent, effective ways to use AI in everyday work. From prompt templates to content workflows for blogs, social media, including product photos, images or video generation. Everything is clear, tested, and ready to scale.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="services-cta muted-text">Not sure where to start? Let’s talk about what you’re trying to achieve.</p>
+            <a href="#contact" class="services-cta-link" aria-label="Contact to scope a 30-minute intro call">Let’s talk about your project</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <img src="img/author.png" alt="Author Profile" class="profile-image" id="profile-image">
+                <div class="about-text">
+                    <h2>About the Creator</h2>
+                    <p>I’m Michał Dąbrowski, a software engineer with years of experience building interactive applications for brands such as Halton, Pepsi, TripleDot, and Samsung.</p>
+                    <p>I hold a postgraduate degree in Artificial Intelligence Project Management, where I deepened my understanding of how AI works and how it can create real business value. I’m constantly learning how to apply AI in practical ways. </p>
+                        <p>Make Good Prompt is where I share what works: tested tools, workflows, and methods that help people and teams get real results from AI without the complexity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get in touch</h2>
+                    <p>Tell me what you’re trying to achieve, and I’ll suggest a simple next step.</p>
+                    <p class="contact-prefer-email muted-text">Prefer email? <a href="mailto:contact@makegoodprompt.com">contact@makegoodprompt.com</a></p>
+                    <p>I reply within 24 hours.</p>
+                </div>
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xanayaye" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What do you need help with?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="A short description helps: goal, current tools, deadline, budget range (if any)." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <a href="https://www.linkedin.com/in/micha%C5%82-d%C4%85browski-459747179/" target="_blank" class="contact-link">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-youtube contact-icon"></i>
+                    <a href="" target="_blank" class="contact-link">YouTube</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <a href="mailto:contact@makegoodprompt.com" class="contact-link">contact@makegoodprompt.com</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 Make Good Prompt. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
