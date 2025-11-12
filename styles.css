@@ -664,6 +664,31 @@ body {
     color: var(--color-orange);
 }
 
+.footer .contact-item-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.footer .contact-item-disabled:hover .contact-icon {
+    transform: none;
+    color: var(--color-orange);
+}
+
+.footer .contact-item-disabled .contact-link {
+    color: var(--text-gray);
+    cursor: not-allowed;
+}
+
+.footer .contact-item-disabled .contact-link:hover {
+    color: var(--text-gray);
+}
+
+.footer .contact-item-disabled .contact-link small {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    font-weight: 400;
+}
+
 .copyright {
     color: var(--text-gray);
     font-size: 0.9rem;
