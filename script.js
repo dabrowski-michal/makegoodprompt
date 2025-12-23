@@ -311,23 +311,23 @@ const caseStudiesData = [
             {
                 title: 'Context & Challenge',
                 paragraphs: [
-                    '<span class="case-study-highlight">SAWAY</span> is a Polish e-commerce footwear brand with frequent product launches. Traditional photoshoots with model made image production slow and expensive, while scaling visuals across a growing catalog was difficult. The goal was to automate product imagery generation while preserving the visual quality of existing photos.'
+                    'SAWAY is a Polish e-commerce footwear brand with frequent product launches. Traditional photoshoots with model made image production slow and expensive, while scaling visuals across a growing catalog was difficult. The goal was to automate product imagery generation while preserving the visual quality of existing photos.'
                 ],
                 imageCaption: 'Existing assets used to maintain brand consistency'
             },
             {
                 title: 'Solution & Automation',
                 paragraphs: [
-                    'I designed an <span class="case-study-highlight">automated image generation pipeline</span> built around structured inputs and repeatable logic. The workflow uses 1 style reference image and 4 product images per SKU, executes prompt logic, generates multiple visual variants, and automatically organizes outputs. The entire process is orchestrated in <span class="case-study-highlight">n8n</span>, allowing batch processing and <span class="case-study-highlight">fully unattended</span> runs, including overnight jobs.'                ],
+                    'I designed an automated image generation pipeline built around structured inputs and repeatable logic. The workflow uses 1 style reference image and 4 product images per SKU, executes prompt logic, generates multiple visual variants, and automatically organizes outputs. The entire process is orchestrated in n8n, allowing batch processing and fully unattended runs, including overnight jobs.'                ],
                 imageCaption: 'Automated image generation pipeline in n8n (selected stage)'
             },  
             {
                 title: 'Outcome & Impact',
                 paragraphs: [
-                    'The system reduced the <span class="case-study-highlight">cost per image to $0.09</span> and the generation time to ~<span class="case-study-highlight">8 minutes per complete product packshot set</span>. Manual photoshoots were removed from the process, while brand consistency was maintained. The automation now scales effortlessly with the product catalog, turning image creation into a repeatable <span class="case-study-highlight">production workflow</span> rather than a manual task.'              ],
+                    'The system reduced the cost per image to $0.09 and the generation time to ~2 minutes per image. Manual photoshoots were removed from the process, while brand consistency was maintained. The automation now scales effortlessly with the product catalog, turning image creation into a repeatable production workflow rather than a manual task.'              ],
                 imageCaption: 'Exploring prompting strategies and visual approaches'            }
         ],
-        tools: ['n8n', 'AI Studio', 'Gemini 3 Pro', 'Nano Banana Pro API', 'KIE AI']
+        tools: ['n8n', 'Prompt Engineering', 'Image Generation API', 'Workflow Automation']
     }
     // TODO: Add more case studies here, e.g.:
     // {
