@@ -89,6 +89,12 @@ function initAnimations() {
         { opacity: 1, y: 0, duration: 1 },
         ".contact-section"
     );
+
+    animateWithScrollTrigger(".case-studies-accordion",
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        ".case-studies-section"
+    );
 }
 
 // Hover animations
@@ -290,6 +296,289 @@ function initContactForm() {
     // Formspree handles submission server-side; no custom JS required.
 }
 
+// Case Studies Accordion
+// TODO: Add more case studies to this array as they become available
+const caseStudiesData = [
+    {
+        id: 'case-study-1',
+        title: 'Automated product imagery for e-commerce fashion brand',
+        meta: {
+            client: 'SAWAY',
+            scope: 'E-commerce automation',
+            role: 'AI Workflow Design & Implementation'
+        },
+        blocks: [
+            {
+                title: 'Context & Challenge',
+                paragraphs: [
+                    '<span class="case-study-highlight">SAWAY</span> is a Polish e-commerce footwear brand with frequent product launches. Traditional photoshoots with model made image production slow and expensive, while scaling visuals across a growing catalog was difficult. The goal was to automate product imagery generation while preserving the visual quality of existing photos.'
+                ],
+                imageCaption: 'Existing assets used to maintain brand consistency'
+            },
+            {
+                title: 'Solution & Automation',
+                paragraphs: [
+                    'I designed an <span class="case-study-highlight">automated image generation pipeline</span> built around structured inputs and repeatable logic. The workflow uses 1 style reference image and 4 product images per SKU, executes prompt logic, generates multiple visual variants, and automatically organizes outputs. The entire process is orchestrated in <span class="case-study-highlight">n8n</span>, allowing batch processing and <span class="case-study-highlight">fully unattended</span> runs, including overnight jobs.'                ],
+                imageCaption: 'Automated image generation pipeline in n8n (selected stage)'
+            },  
+            {
+                title: 'Outcome & Impact',
+                paragraphs: [
+                    'The system reduced the <span class="case-study-highlight">cost per image to $0.09</span> and the generation time to ~<span class="case-study-highlight">8 minutes per complete product packshot set</span>. Manual photoshoots were removed from the process, while brand consistency was maintained. The automation now scales effortlessly with the product catalog, turning image creation into a repeatable <span class="case-study-highlight">production workflow</span> rather than a manual task.'              ],
+                imageCaption: 'Exploring prompting strategies and visual approaches'            }
+        ],
+        tools: ['n8n', 'AI Studio', 'Gemini 3 Pro', 'Nano Banana Pro API', 'KIE AI']
+    }
+    // TODO: Add more case studies here, e.g.:
+    // {
+    //     id: 'case-study-2',
+    //     title: 'Case Study #2 — [Client Name]',
+    //     subtitle: '[Brief description]',
+    //     meta: {
+    //         client: '[Client]',
+    //         scope: '[Scope]',
+    //         role: '[Role]'
+    //     },
+    //     blocks: [
+    //         {
+    //             title: 'Block Title',
+    //             paragraphs: ['...'],
+    //             imageCaption: 'Caption text'
+    //         }
+    //     ],
+    //     tools: ['Tool 1', 'Tool 2']
+    // }
+];
+
+function generateCaseStudyHTML(caseStudy) {
+    const toolsHTML = caseStudy.tools && caseStudy.tools.length > 0
+        ? `
+            <div class="case-study-tools">
+                <span class="case-study-tools-label">Tools used:</span>
+                ${caseStudy.tools.map(tool => `<span class="case-study-tool-tag">${tool}</span>`).join('')}
+            </div>
+        `
+        : '';
+
+    // Generate meta row HTML
+    const metaHTML = caseStudy.meta
+        ? `
+            <div class="case-study-meta">
+                <div class="case-study-meta-item">
+                    <span class="case-study-meta-label">Client:</span>
+                    <span class="case-study-meta-value">${caseStudy.meta.client}</span>
+                </div>
+                <div class="case-study-meta-item">
+                    <span class="case-study-meta-label">Scope:</span>
+                    <span class="case-study-meta-value">${caseStudy.meta.scope}</span>
+                </div>
+                <div class="case-study-meta-item">
+                    <span class="case-study-meta-label">Role:</span>
+                    <span class="case-study-meta-value">${caseStudy.meta.role}</span>
+                </div>
+            </div>
+        `
+        : '';
+
+    // Generate blocks HTML with alternating layout
+    const imageFiles = ['SawayWebsite.png', 'Automation.png', 'Effects.png'];
+    const blocksHTML = caseStudy.blocks
+        ? caseStudy.blocks.map((block, index) => {
+            const isImageLeft = index % 2 === 0;
+            const blockClass = `case-study-block ${isImageLeft ? 'block-image-left' : 'block-image-right'}`;
+            const imageFile = imageFiles[index] || 'SawayWebsite.png';
+            
+            return `
+                <div class="${blockClass}" data-block-index="${index}">
+                    <div class="case-study-block-image">
+                        <img src="img/${imageFile}" alt="${block.imageCaption || 'Case study image'}" class="case-study-image-large">
+                        <p class="case-study-image-caption">${block.imageCaption || 'Image placeholder'}</p>
+                    </div>
+                    <div class="case-study-block-text">
+                        <h3 class="case-study-block-title">${block.title}</h3>
+                        <div class="case-study-block-content">
+                            ${block.paragraphs.map(para => `<p>${para}</p>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('')
+        : '';
+
+    return `
+        <div class="case-study-item" data-case-study-id="${caseStudy.id}">
+            <button 
+                class="case-study-header" 
+                aria-expanded="false" 
+                aria-controls="${caseStudy.id}-content"
+                id="${caseStudy.id}-header"
+            >
+                <img src="img/saway_logo.png" alt="SAWAY Logo" class="case-study-header-logo">
+                <div class="case-study-header-content">
+                    <h3 class="case-study-title">${caseStudy.title}</h3>
+                </div>
+                <i class="fas fa-chevron-down case-study-chevron" aria-hidden="true"></i>
+            </button>
+            <div 
+                class="case-study-content" 
+                id="${caseStudy.id}-content" 
+                aria-labelledby="${caseStudy.id}-header"
+            >
+                <div class="case-study-content-inner">
+                    <div class="case-study-header-section">
+                        ${metaHTML}
+                    </div>
+                    ${blocksHTML}
+                    ${toolsHTML}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function initCaseStudiesAccordion() {
+    const accordionContainer = document.getElementById('case-studies-accordion');
+    if (!accordionContainer || !caseStudiesData.length) {
+        return;
+    }
+
+    // Generate HTML from data
+    accordionContainer.innerHTML = caseStudiesData.map(generateCaseStudyHTML).join('');
+
+    // Attach event listeners to each case study item
+    const caseStudyItems = accordionContainer.querySelectorAll('.case-study-item');
+    
+    caseStudyItems.forEach(item => {
+        const header = item.querySelector('.case-study-header');
+        const content = item.querySelector('.case-study-content');
+        
+        if (!header || !content) return;
+
+        const toggleAccordion = (e) => {
+            // Prevent default if it's a keyboard event
+            if (e.type === 'keydown') {
+                if (e.key !== 'Enter' && e.key !== ' ') {
+                    return;
+                }
+                e.preventDefault();
+            }
+
+            const isExpanded = item.classList.contains('is-expanded');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (isExpanded) {
+                // Collapse
+                item.classList.remove('is-expanded');
+                header.setAttribute('aria-expanded', 'false');
+                
+                if (prefersReducedMotion) {
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    // Hide blocks immediately
+                    const blocks = content.querySelectorAll('.case-study-block');
+                    blocks.forEach(block => {
+                        block.style.opacity = '0';
+                    });
+                } else {
+                    // Animate collapse
+                    if (typeof gsap !== 'undefined') {
+                        // Fade out blocks first
+                        const blocks = content.querySelectorAll('.case-study-block');
+                        gsap.to(blocks, {
+                            opacity: 0,
+                            y: -10,
+                            duration: 0.2,
+                            ease: 'power2.in'
+                        });
+                        
+                        // Then collapse content
+                        gsap.to(content, {
+                            maxHeight: 0,
+                            opacity: 0,
+                            paddingBottom: 0,
+                            duration: 0.4,
+                            delay: 0.1,
+                            ease: 'power2.inOut',
+                            onComplete: () => {
+                                content.style.maxHeight = '0';
+                            }
+                        });
+                    } else {
+                        // Fallback CSS transition
+                        content.style.maxHeight = '0';
+                        content.style.opacity = '0';
+                    }
+                }
+                } else {
+                // Expand
+                item.classList.add('is-expanded');
+                header.setAttribute('aria-expanded', 'true');
+                
+                // Set initial height for animation
+                content.style.maxHeight = 'none';
+                const height = content.scrollHeight;
+                content.style.maxHeight = '0';
+                
+                // Force reflow
+                content.offsetHeight;
+                
+                if (prefersReducedMotion) {
+                    content.style.maxHeight = 'none';
+                    content.style.opacity = '1';
+                    // Show blocks immediately
+                    const blocks = content.querySelectorAll('.case-study-block');
+                    blocks.forEach(block => {
+                        block.style.opacity = '1';
+                        block.style.transform = 'none';
+                    });
+                } else {
+                    // Animate expand
+                    if (typeof gsap !== 'undefined') {
+                        gsap.fromTo(content, 
+                            { maxHeight: 0, opacity: 0, paddingBottom: 0 },
+                            {
+                                maxHeight: height + 'px',
+                                opacity: 1,
+                                paddingBottom: 50,
+                                duration: 0.4,
+                                ease: 'power2.inOut',
+                                onComplete: () => {
+                                    content.style.maxHeight = 'none';
+                                }
+                            }
+                        );
+                        
+                        // Stagger animation for blocks
+                        const blocks = content.querySelectorAll('.case-study-block');
+                        blocks.forEach((block, index) => {
+                            gsap.fromTo(block,
+                                { opacity: 0, y: 20 },
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.5,
+                                    delay: 0.2 + (index * 0.15),
+                                    ease: 'power2.out'
+                                }
+                            );
+                        });
+                    } else {
+                        // Fallback CSS transition
+                        content.style.maxHeight = height + 'px';
+                        content.style.opacity = '1';
+                    }
+                }
+            }
+        };
+
+        // Click handler
+        header.addEventListener('click', toggleAccordion);
+        
+        // Keyboard handler
+        header.addEventListener('keydown', toggleAccordion);
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initAnimations();
@@ -298,4 +587,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScrolling();
     initContactForm();
+    initCaseStudiesAccordion();
 });
