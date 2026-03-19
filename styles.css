@@ -1129,6 +1129,25 @@ body {
     font-weight: 400;
 }
 
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.footer-social-link {
+    color: var(--text-light);
+    font-size: 1.8rem;
+    transition: color 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+
+.footer-social-link:hover {
+    color: var(--color-orange);
+    transform: scale(1.2);
+}
+
 .copyright {
     color: var(--text-gray);
     font-size: 0.9rem;
