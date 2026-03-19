@@ -448,169 +448,84 @@ body {
     text-align: center;
 }
 
-.case-studies-accordion {
+/* Case Studies Carousel */
+.case-studies-carousel {
     max-width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 32px;
 }
 
-/* Case Study Item */
-.case-study-item {
+/* Navigation Tabs */
+.case-studies-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.case-studies-nav-btn {
+    padding: 10px 28px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: var(--text-gray);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.case-studies-nav-btn:hover {
+    border-color: var(--color-orange);
+    color: var(--text-light);
+}
+
+.case-studies-nav-btn.is-active {
+    background: var(--color-orange);
+    border-color: var(--color-orange);
+    color: #000;
+    font-weight: 600;
+}
+
+/* Panel */
+.case-studies-panel {
     background: var(--bg-card);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-    transition: all 0.3s ease;
+    padding: 50px;
 }
 
-.case-study-item:hover {
-    border-color: var(--border-orange-light);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Case Study Header (Clickable) */
-.case-study-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 30px;
-    cursor: pointer;
-    background: #000000;
-    border: none;
-    width: 100%;
-    text-align: left;
-    color: var(--text-light);
-    transition: background-color 0.2s ease, border-radius 0.3s ease;
-    position: relative;
-    gap: 20px;
-    border-radius: 15px;
-}
-
-.case-study-item.is-expanded .case-study-header {
-    border-radius: 15px 15px 0 0;
-}
-
-.case-study-header:hover {
-    background-color: #000000;
-}
-
-.case-study-header-logo {
+/* Panel Logo */
+.case-study-panel-logo {
     height: 40px;
     width: auto;
     object-fit: contain;
-    flex-shrink: 0;
-}
-
-.case-study-header:focus {
-    outline: 2px solid rgba(255, 208, 70, 0.9);
-    outline-offset: -2px;
-}
-
-.case-study-header-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: block;
+    margin-bottom: 16px;
 }
 
 .case-study-title {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-white);
-    margin: 0;
-}
-
-.case-study-subtitle {
-    font-size: 1rem;
-    color: var(--text-gray);
-    margin: 0;
-}
-
-.case-study-chevron {
-    font-size: 1.2rem;
-    color: var(--color-orange);
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
-    margin-left: 20px;
-}
-
-.case-study-item.is-expanded .case-study-chevron {
-    transform: rotate(180deg);
-}
-
-/* Case Study Content (Collapsible) */
-.case-study-content {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-    padding: 0 50px;
-}
-
-.case-study-item.is-expanded .case-study-content {
-    max-height: 5000px;
-    opacity: 1;
-    padding: 0 50px 50px;
-}
-
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-    .case-study-content {
-        transition: none;
-    }
-    
-    .case-study-chevron {
-        transition: none;
-    }
-    
-    .case-study-item.is-expanded .case-study-content {
-        max-height: none;
-    }
-    
-    .case-study-block {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
+    margin: 0 0 20px 0;
 }
 
 /* Case Study Content Inner */
 .case-study-content-inner {
-    padding-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 60px;
     text-align: left;
 }
 
-/* Header Section (Logo + Meta) */
+/* Header Section */
 .case-study-header-section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 10px;
-}
-
-.case-study-logo-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.case-study-logo-placeholder {
-    width: 180px;
-    height: 70px;
-    background: var(--bg-input);
-    border: 1px solid var(--border-gray);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-gray);
-    font-size: 0.9rem;
-    text-align: center;
+    gap: 16px;
 }
 
 /* Meta Row */
@@ -648,8 +563,6 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     align-items: center;
-    opacity: 0;
-    transform: translateY(20px);
 }
 
 .case-study-block.block-image-left {
@@ -666,23 +579,6 @@ body {
 
 .case-study-block-text {
     grid-area: text;
-}
-
-/* Large Image Placeholder */
-.case-study-image-placeholder-large {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: var(--color-yellow);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-dark);
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .case-study-image-large {
@@ -714,7 +610,6 @@ body {
 .case-study-block-content {
     color: var(--text-light);
     line-height: 1.8;
-    max-width: 600px;
 }
 
 .case-study-block-content p {
@@ -761,21 +656,9 @@ body {
     .case-studies-section .container {
         max-width: 100%;
     }
-    
-    .case-study-content {
-        padding: 0 40px;
-    }
-    
-    .case-study-item.is-expanded .case-study-content {
-        padding: 0 40px 40px;
-    }
-    
+
     .case-study-block {
         gap: 40px;
-    }
-    
-    .case-study-block-content {
-        max-width: 100%;
     }
 }
 
@@ -783,90 +666,59 @@ body {
     .case-studies-section {
         padding: 60px 0;
     }
-    
-    .case-study-header {
-        padding: 20px;
+
+    .case-studies-panel {
+        padding: 30px 25px;
     }
-    
-    .case-study-header-logo {
-        height: 32px;
-    }
-    
+
     .case-study-title {
         font-size: 1.2rem;
     }
-    
-    .case-study-subtitle {
-        font-size: 0.95rem;
-    }
-    
-    .case-study-content {
-        padding: 0 25px;
-    }
-    
-    .case-study-item.is-expanded .case-study-content {
-        padding: 0 25px 30px;
-    }
-    
+
     .case-study-content-inner {
-        padding-top: 30px;
         gap: 40px;
     }
-    
-    .case-study-header-section {
-        gap: 15px;
-    }
-    
-    .case-study-logo-placeholder {
-        width: 150px;
-        height: 60px;
-        font-size: 0.85rem;
-    }
-    
+
     .case-study-meta {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     /* Stack blocks vertically on mobile */
     .case-study-block {
         grid-template-columns: 1fr;
         grid-template-areas: "image" "text" !important;
         gap: 25px;
     }
-    
+
     .case-study-block-image {
         grid-area: image;
     }
-    
+
     .case-study-block-text {
         grid-area: text;
     }
-    
+
     .case-study-block-title {
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
-    
+
     .case-study-block-content p {
         font-size: 1rem;
         margin-bottom: 16px;
     }
-    
-    .case-study-image-placeholder-large {
-        aspect-ratio: 16 / 10;
-    }
-    
+
     .case-study-image-large {
         aspect-ratio: 16 / 10;
     }
-    
+
     .case-study-tools {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
     }
-    
+
     .case-study-tools-label {
         width: 100%;
     }
@@ -964,101 +816,32 @@ body {
 
 /* Contact Section */
 .contact-section {
-    padding: 100px 0;
+    padding: 40px 0;
     background: var(--bg-dark);
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-}
-
-.contact-section .contact-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
 }
 
-.contact-info h2 {
+.contact-content h2 {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-orange);
-    margin-bottom: 30px;
+    margin: 0;
 }
 
-.contact-info p {
+.contact-content > p {
     font-size: 1.1rem;
     color: var(--text-light);
-    margin-bottom: 20px;
+    margin: 0;
+    max-width: 480px;
 }
 
-.contact-prefer-email {
-    margin-top: 8px;
-    text-align: left;
-}
-
-.contact-form {
-    background: var(--bg-card);
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid var(--border-orange-light);
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    color: var(--text-white);
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 15px;
-    background: var(--bg-input);
-    border: 1px solid var(--border-gray);
-    border-radius: 8px;
-    color: var(--text-light);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-orange);
-    box-shadow: 0 0 10px var(--shadow-orange-light);
-}
-
-.form-group textarea {
-    height: 120px;
-    resize: vertical;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 15px;
-    background: var(--gradient-primary-45);
-    color: var(--text-dark);
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--shadow-orange-strong);
-}
 
 /* Footer */
 .footer {
@@ -1067,85 +850,60 @@ body {
     text-align: center;
 }
 
-.footer .contact-info {
+.footer-contact-btns {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-bottom: 30px;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.footer .contact-item {
+.footer-contact-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
-
-.footer .contact-icon {
-    font-size: 1.5rem;
-    color: var(--color-orange);
-    transition: all 0.3s ease;
-}
-
-.footer .contact-link {
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
     color: var(--text-light);
     text-decoration: none;
+    font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-.footer .contact-link:hover {
+.footer-contact-btn i {
+    font-size: 1rem;
     color: var(--color-orange);
 }
 
-.footer .contact-item:hover .contact-icon {
-    transform: scale(1.2);
-    color: var(--color-orange);
+.footer-contact-btn:hover {
+    border-color: var(--color-orange);
+    color: var(--text-white);
 }
 
-.footer .contact-item-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.footer .contact-item-disabled:hover .contact-icon {
-    transform: none;
-    color: var(--color-orange);
-}
-
-.footer .contact-item-disabled .contact-link {
-    color: var(--text-gray);
-    cursor: not-allowed;
-}
-
-.footer .contact-item-disabled .contact-link:hover {
-    color: var(--text-gray);
-}
-
-.footer .contact-item-disabled .contact-link small {
-    font-size: 0.75rem;
-    color: var(--text-gray);
-    font-weight: 400;
-}
-
-.footer-social {
+.footer-email {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 8px;
     margin-bottom: 32px;
 }
 
-.footer-social-link {
-    color: var(--text-light);
-    font-size: 1.8rem;
-    transition: color 0.2s, transform 0.2s;
-    text-decoration: none;
+.footer-email i {
+    font-size: 1rem;
+    color: var(--color-orange);
 }
 
-.footer-social-link:hover {
+.footer-email a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-email a:hover {
     color: var(--color-orange);
-    transform: scale(1.2);
 }
 
 .copyright {
@@ -1229,21 +987,6 @@ body {
         height: 150px;
     }
     
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-    
-    .contact-form {
-        padding: 30px 20px;
-    }
-    
-    .contact-info {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
     .section-title {
         font-size: 1.5rem;
     }
@@ -1270,9 +1013,6 @@ body {
         max-width: 320px;
     }
 
-    .contact-prefer-email {
-        text-align: center;
-    }
 }
 
 @media (max-width: 480px) {
